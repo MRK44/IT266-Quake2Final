@@ -1091,5 +1091,10 @@ struct edict_s
 	// common data blocks
 	moveinfo_t		moveinfo;
 	monsterinfo_t	monsterinfo;
+
+	//Potential for bleeding stuff, will have to be renamed.
+	float	poison_time;
+	float	 poison_strength;
+	edict_t*	poisoner;
 };
 
