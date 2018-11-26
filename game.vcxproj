@@ -81,8 +81,7 @@
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\baseq2\</OutDir>
-    <IntDir>.\release\</IntDir>
+    <OutDir>..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\Quake 2\JustABox</OutDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -250,7 +249,6 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\release\gamex86.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>.\game.def</ModuleDefinitionFile>
       <ProgramDatabaseFile>.\..\release/gamex86.pdb</ProgramDatabaseFile>
@@ -260,6 +258,7 @@
       <DataExecutionPrevention />
       <ImportLibrary>.\..\release/gamex86.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
+      <OutputFile>$(OutDir)$(TargetName)x86$(TargetExt)</OutputFile>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
