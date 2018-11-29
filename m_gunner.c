@@ -27,6 +27,7 @@ void gunner_idlesound (edict_t *self)
 void gunner_sight (edict_t *self, edict_t *other)
 {
 	gi.sound (self, CHAN_VOICE, sound_sight, 1, ATTN_NORM, 0);
+	gi.sound(self, CHAN_VOICE, gi.soundindex(va("*Spotted.wav", 1)), 1, ATTN_NORM, 0);
 }
 
 void gunner_search (edict_t *self)

@@ -279,6 +279,7 @@ void InfantryMachineGun (edict_t *self)
 
 void infantry_sight (edict_t *self, edict_t *other)
 {
+	gi.sound(self, CHAN_VOICE, gi.soundindex(va("*Spotted%i.wav", 1)), 1, ATTN_STATIC, 0);
 	gi.sound (self, CHAN_BODY, sound_sight, 1, ATTN_NORM, 0);
 }
 

@@ -426,11 +426,13 @@ qboolean FindTarget (edict_t *self)
 	else if (level.sound_entity_framenum >= (level.framenum - 1))
 	{
 		client = level.sound_entity;
+		gi.sound(self, CHAN_VOICE, gi.soundindex(va("*Spotted%i.wav", 1)), 1, ATTN_STATIC, 0);
 		heardit = true;
 	}
 	else if (!(self->enemy) && (level.sound2_entity_framenum >= (level.framenum - 1)) && !(self->spawnflags & 1) )
 	{
 		client = level.sound2_entity;
+		gi.sound(self, CHAN_VOICE, gi.soundindex(va("*Spotted%i.wav", 1)), 1, ATTN_STATIC, 0);
 		heardit = true;
 	}
 	else
@@ -445,8 +447,9 @@ qboolean FindTarget (edict_t *self)
 		return false;
 
 	if (client == self->enemy)
+		
 		return true;	// JDC false;
-
+		
 	if (client->client)
 	{
 		if (client->flags & FL_NOTARGET)
@@ -474,7 +477,7 @@ qboolean FindTarget (edict_t *self)
 		if (r == RANGE_FAR)
 			return false;
 
-// this is where we would check invisibility
+// this is where we would check invisibility ~GAME MOD!!!~
 
 		// is client in an spot too dark to be seen?
 		if (client->light_level <= 5)
@@ -559,7 +562,7 @@ qboolean FindTarget (edict_t *self)
 
 	if (!(self->monsterinfo.aiflags & AI_SOUND_TARGET) && (self->monsterinfo.sight))
 		self->monsterinfo.sight (self, self->enemy);
-
+		
 	return true;
 }
 
