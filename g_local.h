@@ -252,7 +252,7 @@ typedef struct
 {
 	char		helpmessage1[512];
 	char		helpmessage2[512];
-	int			helpchanged;	// flash F1 icon if non 0, play sound
+	int			help_ged;	// flash F1 icon if non 0, play sound
 								// and increment only if 1, 2, or 3
 
 	gclient_t	*clients;		// [maxclients]
@@ -788,6 +788,11 @@ void G_RunEntity (edict_t *ent);
 void SaveClientData (void);
 void FetchClientEntData (edict_t *ent);
 
+//DECOY MOD FOR GAME-MOD CLASS. TESTING.
+
+// WF - decoy prototype
+void SP_Decoy(edict_t *self);
+
 //
 // g_chase.c
 //
@@ -1092,9 +1097,12 @@ struct edict_s
 	moveinfo_t		moveinfo;
 	monsterinfo_t	monsterinfo;
 
-	//Potential for bleeding stuff, will have to be renamed.
-	float	poison_time;
-	float	 poison_strength;
-	edict_t*	poisoner;
+
+	//DECOY MOD FOR GAME-MOD CLASS. TESTING.
+	// WF - Decoy variables
+	edict_t *decoy;    //Pointer to decoy
+	edict_t *creator;  //Who created this entity (used by decoy)
+
+
 };
 

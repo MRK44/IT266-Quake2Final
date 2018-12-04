@@ -514,6 +514,8 @@ void monster_death_use (edict_t *self)
 
 qboolean monster_start (edict_t *self)
 {
+	//Let monsters into deathmatch [og code] Decoy Game-Mod stuff
+	
 	if (deathmatch->value)
 	{
 		G_FreeEdict (self);

@@ -966,6 +966,10 @@ void ClientCommand (edict_t *ent)
 		Cmd_PutAway_f (ent);
 	else if (Q_stricmp (cmd, "wave") == 0)
 		Cmd_Wave_f (ent);
+	// 'decoy' command
+	//GAME-MOD DECOY STUFF.
+	//else if (Q_stricmp(cmd, "decoy") == 0)
+		//SP_Decoy(ent);
 	else if (Q_stricmp(cmd, "playerlist") == 0)
 		Cmd_PlayerList_f(ent);
 	else	// anything that doesn't match a command will be a chat

@@ -103,7 +103,6 @@ void Use_Target_Help (edict_t *ent, edict_t *other, edict_t *activator)
 	else
 		strncpy (game.helpmessage2, ent->message, sizeof(game.helpmessage1)-1);
 
-	game.helpchanged++;
 }
 
 /*QUAKED target_help (1 0 1) (-16 -16 -24) (16 16 24) help1
