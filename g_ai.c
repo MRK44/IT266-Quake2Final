@@ -1,4 +1,5 @@
 // g_ai.c
+//test
 
 #include "g_local.h"
 
