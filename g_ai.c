@@ -413,7 +413,7 @@ qboolean FindTarget (edict_t *self)
 
 // revised behavior so they will wake up if they "see" a player make a noise
 // but not weapon impact/explosion noises
-
+	
 	heardit = false;
 	if ((level.sight_entity_framenum >= (level.framenum - 1)) && !(self->spawnflags & 1) )
 	{
@@ -427,6 +427,9 @@ qboolean FindTarget (edict_t *self)
 	{
 		client = level.sound_entity;
 		gi.sound(self, CHAN_VOICE, gi.soundindex(va("*Spotted%i.wav", 1)), 1, ATTN_STATIC, 0);
+		//SP_Decoy(enemy);
+		//This turns the current monster into the soldier. Need to figure out how to instead spawn a new soldier.
+		//SP_monster_soldier_x(self);
 		heardit = true;
 	}
 	else if (!(self->enemy) && (level.sound2_entity_framenum >= (level.framenum - 1)) && !(self->spawnflags & 1) )

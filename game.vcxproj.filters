@@ -2,15 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{e26bf67e-f4dc-40ac-9962-5b17832632f0}</UniqueIdentifier>
+      <UniqueIdentifier>{5527ddc2-6095-4d7e-8b85-4a82bf895e5c}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;rc;def;r;odl;hpj;bat;for;f90</Extensions>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{c8e57c1d-3278-4294-a56d-a17cf3ebd902}</UniqueIdentifier>
+      <UniqueIdentifier>{55516d0d-8651-4b1d-8337-107b2c37c550}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;fi;fd</Extensions>
     </Filter>
     <Filter Include="Resource Files">
-      <UniqueIdentifier>{eee52e24-1b86-4d5f-8efa-cd9cbc058082}</UniqueIdentifier>
+      <UniqueIdentifier>{c8ab2688-f84d-4632-8ac2-a5938e9a8051}</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;cnt;rtf;gif;jpg;jpeg;jpe</Extensions>
     </Filter>
   </ItemGroup>
@@ -157,6 +157,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="q_shared.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="wf_decoy.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

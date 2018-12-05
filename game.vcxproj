@@ -66,8 +66,7 @@
     <_ProjectFileVersion>12.0.21005.1</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>.\..\debug\</OutDir>
-    <IntDir>.\debug\</IntDir>
+    <OutDir>..\..\..\..\..\Program Files %28x86%29\Steam\steamapps\common\Quake 2\JustABox</OutDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release Alpha|Win32'">
@@ -113,7 +112,6 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\debug\gamex86.dll</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <ModuleDefinitionFile>.\game.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -126,6 +124,7 @@
       <DataExecutionPrevention />
       <ImportLibrary>.\..\debug/gamex86.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
+      <OutputFile>$(OutDir)$(TargetName)x86$(TargetExt)</OutputFile>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -258,7 +257,7 @@
       <DataExecutionPrevention />
       <ImportLibrary>.\..\release/gamex86.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
-      <OutputFile>$(OutDir)$(TargetName)x86$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <Bscmake>
       <SuppressStartupBanner>true</SuppressStartupBanner>
@@ -314,6 +313,7 @@
     <ClCompile Include="p_view.c" />
     <ClCompile Include="p_weapon.c" />
     <ClCompile Include="q_shared.c" />
+    <ClCompile Include="wf_decoy.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="g_local.h" />

@@ -277,6 +277,8 @@ void InfantryMachineGun (edict_t *self)
 	monster_fire_bullet (self, start, forward, 3, 4, DEFAULT_BULLET_HSPREAD, DEFAULT_BULLET_VSPREAD, flash_number);
 }
 
+
+
 void infantry_sight (edict_t *self, edict_t *other)
 {
 	gi.sound(self, CHAN_VOICE, gi.soundindex(va("*Spotted%i.wav", 1)), 1, ATTN_STATIC, 0);
