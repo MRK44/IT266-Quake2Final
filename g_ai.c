@@ -1,5 +1,5 @@
 // g_ai.c
-//test
+
 
 #include "g_local.h"
 
@@ -428,7 +428,6 @@ qboolean FindTarget (edict_t *self)
 	{
 		client = level.sound_entity;
 		gi.sound(self, CHAN_VOICE, gi.soundindex(va("*Spotted%i.wav", 1)), 1, ATTN_STATIC, 0);
-		//SP_Decoy(enemy);
 		//This turns the current monster into the soldier. Need to figure out how to instead spawn a new soldier.
 		//SP_monster_soldier_x(self);
 		heardit = true;
