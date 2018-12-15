@@ -840,6 +840,9 @@ typedef struct
 	int			max_slugs;
 
 	gitem_t		*weapon;
+	//Adding homing missles for the Stinger launcher - GAME MOD.
+	//CCH: New persistant data.
+	qboolean homing_state; // are homing missiles activated?
 	gitem_t		*lastweapon;
 
 	int			power_cubes;	// used for tracking the cubes in coop games

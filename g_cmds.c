@@ -761,6 +761,33 @@ void Cmd_Wave_f (edict_t *ent)
 }
 
 /*
+=================
+Cmd_Homing_f
+CCH: Whole new function for adjusting homing missile state
+GAME MOD!
+=================
+*/
+
+void Cmd_Homing_f(edict_t *ent)
+ {
+	int		i;
+	
+	i = atoi(gi.argv(1));
+	
+	switch (i)
+	{
+	case 0:
+		gi.cprintf(ent, PRINT_HIGH, "Homing missiles off\n");
+		ent->client->pers.homing_state = 0;
+		break;
+		case 1:
+			default:
+				gi.cprintf(ent, PRINT_HIGH, "HOMING MISSILES ON\n");
+				ent->client->pers.homing_state = 1;
+				break;
+				}
+}
+/*
 ==================
 Cmd_Say_f
 ==================
@@ -966,6 +993,9 @@ void ClientCommand (edict_t *ent)
 		Cmd_PutAway_f (ent);
 	else if (Q_stricmp (cmd, "wave") == 0)
 		Cmd_Wave_f (ent);
+	//Homing missile command - Game Mod!!!
+	else if (Q_stricmp(cmd, "homing") == 0)
+		Cmd_Homing_f(ent);
 	// 'decoy' command
 	//GAME-MOD DECOY STUFF.
 	else if (Q_stricmp(cmd, "decoy") == 0)
