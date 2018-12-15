@@ -297,8 +297,8 @@ void blaster_touch (edict_t *self, edict_t *other, cplane_t *plane, csurface_t *
 		return;
 	}
 
-	if (self->owner->client)
-		PlayerNoise(self->owner, self->s.origin, PNOISE_IMPACT);
+	//if (self->owner->client)
+		//PlayerNoise(self->owner, self->s.origin, PNOISE_IMPACT);
 
 	if (other->takedamage)
 	{
@@ -348,7 +348,8 @@ void fire_blaster (edict_t *self, vec3_t start, vec3_t dir, int damage, int spee
 	VectorClear (bolt->mins);
 	VectorClear (bolt->maxs);
 	bolt->s.modelindex = gi.modelindex ("models/objects/laser/tris.md2");
-	bolt->s.sound = gi.soundindex ("misc/lasfly.wav");
+	bolt->s.sound = gi.soundindex("players/male/SilencepP.wav");
+	//bolt->s.sound = gi.soundindex ("misc/lasfly.wav");
 	bolt->owner = self;
 	bolt->touch = blaster_touch;
 	bolt->nextthink = level.time + 2;

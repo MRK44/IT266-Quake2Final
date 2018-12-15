@@ -44,7 +44,8 @@ void PlayerNoise(edict_t *who, vec3_t where, int type)
 	{
 		if (who->client->silencer_shots)
 		{
-			who->client->silencer_shots--;
+			//Make it so you don't lose silencer ammo with each shot.
+			//who->client->silencer_shots--;
 			return;
 		}
 	}
@@ -821,7 +822,8 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 		gi.WriteByte (MZ_BLASTER | is_silenced);
 	gi.multicast (ent->s.origin, MULTICAST_PVS);
 
-	PlayerNoise(ent, start, PNOISE_WEAPON);
+	//Makes it so the enemy will go investigate the noise of the bullet impact rather than just be alerted.
+	//PlayerNoise(ent, start, PNOISE_WEAPON);
 }
 
 

@@ -436,6 +436,8 @@ qboolean FindTarget (edict_t *self)
 	{
 		client = level.sound2_entity;
 		gi.sound(self, CHAN_VOICE, gi.soundindex(va("*Spotted%i.wav", 1)), 1, ATTN_STATIC, 0);
+		
+	
 		heardit = true;
 	}
 	else
@@ -540,7 +542,7 @@ qboolean FindTarget (edict_t *self)
 
 		VectorSubtract (client->s.origin, self->s.origin, temp);
 
-		if (VectorLength(temp) > 1000)	// too far to hear
+		if (VectorLength(temp) > 100)	// too far to hear
 		{
 			return false;
 		}
@@ -554,8 +556,8 @@ qboolean FindTarget (edict_t *self)
 		M_ChangeYaw (self);
 
 		// hunt the sound for a bit; hopefully find the real player
-		self->monsterinfo.aiflags |= AI_SOUND_TARGET;
-		self->enemy = client;
+		//self->monsterinfo.aiflags |= AI_SOUND_TARGET;
+		//self->enemy = client;
 	}
 
 //
