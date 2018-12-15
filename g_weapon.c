@@ -543,6 +543,53 @@ void fire_grenade2 (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int 
 	}
 }
 
+//CCH: Gonna be our new think function for homing missiles.
+void homing_think(edict_t *ent)
+{
+	edict_t *target = NULL;
+	edict_t *blip = NULL;
+	vec3_t targetdir, blipdir;
+	vec_t speed;
+
+	while ((blip = findradius(blip, ent->s.origin, 1000)) != NULL)
+	{
+		if (!(blip->svflags & SVF_MONSTER) && !blip->client)
+			continue;
+		if (blip == ent->owner)
+			continue;
+		if (!blip->takedamage)
+			continue;
+		if (blip->health <= 0)
+			continue;
+		if (!visible(ent, blip))
+			continue;
+		if (!infront(ent,blip))
+			continue;
+		VectorSubtract(blip->s.origin, ent->s.origin, blipdir);
+		blipdir[2] += 16;
+		if ((target == NULL) || (VectorLength(blipdir) < VectorLength(targetdir)))
+		{
+			target = blip;
+			VectorCopy(blipdir, targetdir);
+		}
+	}
+
+	if (target != NULL)
+	{
+		// target has been find, nudge our direction towards it.
+		VectorNormalize(targetdir);
+		VectorScale(targetdir, 0.2, targetdir);
+		VectorAdd(targetdir, ent->movedir, targetdir);
+		VectorNormalize(targetdir);
+		VectorCopy(targetdir, ent->movedir);
+		vectoangles(targetdir, ent->s.angles);
+		speed = VectorLength(ent->velocity);
+		VectorScale(targetdir, speed, ent->velocity);
+	}
+
+	ent->nextthink = level.time + .1;
+}
+
 
 /*
 =================
@@ -618,8 +665,28 @@ void fire_rocket (edict_t *self, vec3_t start, vec3_t dir, int damage, int speed
 	rocket->s.modelindex = gi.modelindex ("models/objects/rocket/tris.md2");
 	rocket->owner = self;
 	rocket->touch = rocket_touch;
-	rocket->nextthink = level.time + 8000/speed;
-	rocket->think = G_FreeEdict;
+	//rocket->nextthink = level.time + 8000/speed;
+	//rocket->think = G_FreeEdict;
+	//CCH: See if this is a player and if they have homing on. GAME MOD
+	if (self->client && self->client->pers.homing_state)
+	{
+		//CCH: if they have 5 cells, start homing, otherwise normal rocket think.
+		if (self->client->pers.inventory[ITEM_INDEX(FindItem("Cells"))] >= 5)
+		{
+			//self->client->pers.inventory[ITEM_INDEX(FindItem("Cells"))] -= 5;
+			rocket->nextthink = level.time + .1;
+			rocket->think = homing_think;
+		}
+		else {
+			gi.cprintf(self, PRINT_HIGH, "No cells for homing missile.\n");
+			rocket->nextthink = level.time + 8000 / speed;
+			rocket->think = G_FreeEdict;
+		}
+	}
+	else {
+		rocket->nextthink = level.time + 8000 / speed;
+		rocket->think = G_FreeEdict;
+	}
 	rocket->dmg = damage;
 	rocket->radius_dmg = radius_damage;
 	rocket->dmg_radius = damage_radius;
