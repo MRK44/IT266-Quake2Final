@@ -1,29 +1,40 @@
+QUAKE 2: JustABox (Metal Gear Solid inspired) Mod
 
-This is the complete source code for Quake 2, version 3.19, buildable with
-visual C++ 6.0.  The linux version should be buildable, but we haven't
-tested it for the release.
 
-The code is all licensed under the terms of the GPL (gnu public license).  
-You should read the entire license, but the gist of it is that you can do 
-anything you want with the code, including sell your new version.  The catch 
-is that if you distribute new binary versions, you are required to make the 
-entire source code available for free to everyone.
+How to play:
 
-The primary intent of this release is for entertainment and educational 
-purposes, but the GPL does allow commercial exploitation if you obey the 
-full license.  If you want to do something commercial and you just can't bear 
-to have your source changes released, we could still negotiate a separate 
-license agreement (for $$$), but I would encourage you to just live with the 
-GPL.
+You are Solid Snake, and your mission is to infiltrate this alien base. 
+Stealth is your best friend on this mission. You're equipped with stealth
+camouflage which can render you invisible to enemies as long as you don't
+attack them. To activate, use "~" and then type "stealth".
 
-All of the Q2 data files remain copyrighted and licensed under the 
-original terms, so you cannot redistribute data from the original game, but if 
-you do a true total conversion, you can create a standalone game based on 
-this code.
+You also are equipped with a signature cardboard box. In the event your
+stealth camo fails you, this is a nice alternative. Simply use "~" and 
+type "cBox". The cardboard box will remove any and all ammo though, as
+you won't be able to attack while being hidden within it.
 
-Thanks to Robert Duffy for doing the grunt work of building this release.
+Luckily for you, you're also equipped with some weapons from the get go.
 
-John Carmack
-Id Software
+Your suppressed Socom pistol will be very useful for taking down enemies
+silently. Use this as your main weapon as it will not attract enemies. 
+However things may get hairy on your mission, so you've been given
+some other, more powerful weapons...
+
+The RGB6 grenade launcher is great for taking down large enemies. It
+explodes upon impact so be careful where you're shooting it.
+
+Next up, the Famas may not hold too much ammo, 25 bullets to be exact--
+but it's a deadly weapon. The power is no slouch so be sure to
+keep ammo handy for this assault rifle.
+
+Finally, you have the Stinger missile launcher. This missile
+launcher comes with a built in homing feature. You can use it
+to lock on to and take out enemies from afar.
+
+Be careful though, Snake. If you're spotted by the enemy,
+they WILL call for backup. The entire base will go on
+high alert and they'll bring out their best soldiers to
+ensure you DON"T survive. So be sure to keep quiet
+and make your way through the base undetected.
 
 

@@ -327,13 +327,53 @@ void Cmd_Notarget_f (edict_t *ent)
 
 	ent->flags ^= FL_NOTARGET;
 	if (!(ent->flags & FL_NOTARGET) )
-		msg = "notarget OFF\n";
+		msg = "Stealth camouflage DEACTIVATED\n";
 	else
-		msg = "notarget ON\n";
+		msg = "Stealth camouflage ACTIVATED\n";
 
 	gi.cprintf (ent, PRINT_HIGH, msg);
 }
 
+/*
+==================
+Cmd_CardBoardBox_f
+
+Sets client to notarget
+Also ensures that you can't use weapons and are automatically crouched.
+
+argv(0) notarget
+==================
+*/
+void Cmd_CBox_f(edict_t *ent)
+{
+	char	*msg;
+	gitem_t		*it;
+
+	if (deathmatch->value && !sv_cheats->value)
+	{
+		gi.cprintf(ent, PRINT_HIGH, "You must run the server with '+set cheats 1' to enable this command.\n");
+		return;
+	}
+
+	ent->flags ^= FL_NOTARGET;
+	if (!(ent->flags & FL_NOTARGET))
+		msg = "Cardboard box un-equipped\n";
+	else {
+		msg = "Cardboard box equipped\n";
+		for (int i = 0; i<game.num_items; i++)
+		{
+			it = itemlist + i;
+			if (!it->pickup)
+				continue;
+			if (!(it->flags & IT_AMMO))
+				continue;
+			Add_Ammo(ent, it, -1000);
+		}
+		ent->client->ps.pmove.pm_flags & PMF_DUCKED;
+	}
+
+	gi.cprintf(ent, PRINT_HIGH, msg);
+}
 
 /*
 ==================
@@ -959,7 +999,7 @@ void ClientCommand (edict_t *ent)
 		Cmd_Give_f (ent);
 	else if (Q_stricmp (cmd, "god") == 0)
 		Cmd_God_f (ent);
-	else if (Q_stricmp (cmd, "notarget") == 0)
+	else if (Q_stricmp (cmd, "stealth") == 0)
 		Cmd_Notarget_f (ent);
 	else if (Q_stricmp (cmd, "noclip") == 0)
 		Cmd_Noclip_f (ent);
@@ -991,8 +1031,11 @@ void ClientCommand (edict_t *ent)
 		Cmd_Kill_f (ent);
 	else if (Q_stricmp (cmd, "putaway") == 0)
 		Cmd_PutAway_f (ent);
-	else if (Q_stricmp (cmd, "wave") == 0)
-		Cmd_Wave_f (ent);
+	else if (Q_stricmp(cmd, "wave") == 0)
+		Cmd_Wave_f(ent);
+	//Cardboard box.
+	else if (Q_stricmp(cmd, "CBox") == 0)
+		Cmd_CBox_f(ent);
 	//Homing missile command - Game Mod!!!
 	else if (Q_stricmp(cmd, "homing") == 0)
 		Cmd_Homing_f(ent);
