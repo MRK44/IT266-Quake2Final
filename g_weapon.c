@@ -427,7 +427,7 @@ static void Grenade_Explode (edict_t *ent)
 		//if (ent->groundentity)
 			//gi.WriteByte (TE_GRENADE_EXPLOSION);
 		//else
-			gi.WriteByte (TE_ROCKET_EXPLOSION);
+			gi.WriteByte (TE_GRENADE_EXPLOSION);
 	//}
 	gi.WritePosition (origin);
 	gi.multicast (ent->s.origin, MULTICAST_PHS);
@@ -481,16 +481,16 @@ void fire_grenade (edict_t *self, vec3_t start, vec3_t aimdir, int damage, int s
 	VectorMA (grenade->velocity, 200 + crandom() * 10.0, up, grenade->velocity);
 	VectorMA (grenade->velocity, crandom() * 10.0, right, grenade->velocity);
 	VectorSet (grenade->avelocity, 980, 100, 750);
-	grenade->movetype = MOVETYPE_FLYMISSILE;
+	grenade->movetype = MOVETYPE_BOUNCE;
 	grenade->clipmask = MASK_SHOT;
 	grenade->solid = SOLID_BBOX;
 	grenade->s.effects |= EF_GRENADE;
 	VectorClear (grenade->mins);
 	VectorClear (grenade->maxs);
-	grenade->s.modelindex = gi.modelindex ("models/objects/rocket/tris.md2");
+	grenade->s.modelindex = gi.modelindex ("models/objects/grenade/tris.md2");
 	grenade->owner = self;
 	grenade->touch = Grenade_Touch;
-	grenade->nextthink = level.time + timer;
+	grenade->nextthink = level.time + 0.7;
 	grenade->think = Grenade_Explode;
 	grenade->dmg = damage;
 	grenade->dmg_radius = damage_radius;
